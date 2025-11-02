@@ -1,0 +1,159 @@
+{
+  "description": "Sample data structure for SOM Dashboard Homepage component",
+  "userName": "Eliza Johnson",
+  "greetingMessage": "Good morning",
+  "showDate": true,
+  "focusTitle": "Today's focus",
+  "focusDescription": "Prioritize time-sensitive deals and critical tasks to finish strong.",
+  "suggestedActionsCount": 4,
+  "showOverdueBadge": true,
+  "quotaAmount": 250000,
+  "forecastAmount": 546000,
+  "weightedPipeline": "1.67%",
+  "pipelineCoverage": "0.35x",
+  "currentQuarter": "2025 Q3",
+  "enableInteractivity": true,
+  "actionItems": [
+    {
+      "type": "risk",
+      "title": "TechStart Inc",
+      "description": "Account risk is high with a 25% drop in usage over the last month. I've devised an emergency plan to prevent churn.",
+      "actionLabel": "Add Mitigation Plan",
+      "accountId": "ACC-001",
+      "sysId": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d"
+    },
+    {
+      "type": "risk",
+      "title": "Alectri at Risk",
+      "description": "Account risk is high with a 35% drop in usage over the last month. I've devised an emergency plan to prevent churn.",
+      "actionLabel": "Add Mitigation Plan",
+      "accountId": "ACC-002",
+      "sysId": "b2c3d4e5-f6a7-5b6c-9d0e-1f2a3b4c5d6e"
+    },
+    {
+      "type": "opportunity",
+      "title": "Intuit - due to upsell potential",
+      "description": "Usage is up 34% this quarter with two license requests. Should I prepare an expansion proposal?",
+      "actionLabel": "Yes, work on it",
+      "accountId": "ACC-003",
+      "sysId": "c3d4e5f6-a7b8-6c7d-0e1f-2a3b4c5d6e7f"
+    },
+    {
+      "type": "opportunity",
+      "title": "GlobalTech Expansion Ready",
+      "description": "Customer satisfaction score increased to 9.2/10. Perfect timing for upsell conversation.",
+      "actionLabel": "Schedule Meeting",
+      "accountId": "ACC-004",
+      "sysId": "d4e5f6a7-b8c9-7d8e-1f2a-3b4c5d6e7f8a"
+    }
+  ],
+  "forecastData": [
+    {
+      "name": "Closed",
+      "value": 250000,
+      "color": "hsl(140, 60%, 50%)"
+    },
+    {
+      "name": "Commit",
+      "value": 100000,
+      "color": "hsl(180, 60%, 45%)"
+    },
+    {
+      "name": "Expect",
+      "value": 50000,
+      "color": "hsl(35, 90%, 60%)"
+    },
+    {
+      "name": "Upside",
+      "value": 40000,
+      "color": "hsl(265, 60%, 60%)"
+    },
+    {
+      "name": "Total",
+      "value": 440000,
+      "color": "hsl(180, 55%, 50%)"
+    }
+  ],
+  "updates": [
+    {
+      "type": "win",
+      "title": "Congrats! Innovation Lab contract signed",
+      "description": "$65K to your quota!",
+      "icon": "🎉",
+      "sysId": "win-001"
+    },
+    {
+      "type": "win",
+      "title": "GlobalTech renewal completed",
+      "description": "$120K annual contract secured!",
+      "icon": "🏆",
+      "sysId": "win-002"
+    },
+    {
+      "type": "news",
+      "title": "TechStart raises $50M Series B",
+      "description": "The funds helped expand its compliance and production tracking software, which was a critical need for modern supply chain management.",
+      "badge": "Funding",
+      "badgeVariant": "default",
+      "timestamp": "Updated 2h ago",
+      "action": "Schedule a call with CTO",
+      "sysId": "news-001"
+    },
+    {
+      "type": "news",
+      "title": "John Smith → CTO at Acme Corp",
+      "description": "New decision maker identified. Consider technical outreach to discuss platform integration opportunities.",
+      "badge": "Promotion",
+      "badgeVariant": "secondary",
+      "timestamp": "Updated 4h ago",
+      "action": "Schedule a call with CTO",
+      "sysId": "news-002"
+    },
+    {
+      "type": "news",
+      "title": "Intuit expands to APAC region",
+      "description": "Opening three new offices in Singapore, Tokyo, and Sydney. Potential for seat expansion.",
+      "badge": "Expansion",
+      "badgeVariant": "default",
+      "timestamp": "Updated 1d ago",
+      "action": "Prepare expansion proposal",
+      "sysId": "news-003"
+    }
+  ],
+  "dataSourceExamples": {
+    "servicenow_rest_api_response": {
+      "action_items_endpoint": "/api/x_your_scope_app/som_dashboard/action_items",
+      "forecast_data_endpoint": "/api/x_your_scope_app/som_dashboard/forecast_data",
+      "updates_endpoint": "/api/x_your_scope_app/som_dashboard/updates"
+    },
+    "glideRecord_query_example": {
+      "table": "x_your_scope_app_action_item",
+      "fields": ["type", "title", "description", "action_label", "account_id", "priority"],
+      "conditions": "active=true^priority>3",
+      "orderBy": "priority DESC",
+      "limit": 10
+    }
+  },
+  "eventPayloadExamples": {
+    "ACTION_ITEM_CLICKED": {
+      "actionType": "risk",
+      "accountId": "ACC-001",
+      "title": "TechStart Inc",
+      "sysId": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d"
+    },
+    "FEEDBACK_THUMBS_UP": {
+      "actionItemId": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+      "title": "TechStart Inc"
+    },
+    "UPDATE_ACTION_CLICKED": {
+      "updateType": "news",
+      "title": "TechStart raises $50M Series B",
+      "action": "Schedule a call with CTO",
+      "sysId": "news-001"
+    },
+    "CHART_DATA_POINT_CLICKED": {
+      "stageName": "Closed",
+      "value": 250000
+    }
+  }
+}

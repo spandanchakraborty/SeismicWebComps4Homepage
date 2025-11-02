@@ -1,0 +1,24 @@
+{
+  "name": "@x_som_demo/som-dashboard-homepage",
+  "version": "1.0.0",
+  "description": "SOM Dashboard Homepage - ServiceNow UI Builder Component for Next Experience (Seismic)",
+  "scripts": {
+    "dev": "now-cli develop",
+    "deploy": "now-cli deploy",
+    "build": "now-cli build"
+  },
+  "keywords": [
+    "servicenow",
+    "ui-builder",
+    "component",
+    "som",
+    "dashboard",
+    "seismic",
+    "next-experience"
+  ],
+  "author": "",
+  "license": "UNLICENSED",
+  "snc": {
+    "scope": "x_som_demo"
+  }
+}

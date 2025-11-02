@@ -1,0 +1,307 @@
+{
+  "label": "SOM Dashboard Homepage",
+  "description": "Sales Operations Management Dashboard with actionable insights, performance tracking, and real-time updates",
+  "properties": [
+    {
+      "name": "userName",
+      "label": "User Name",
+      "description": "Name of the user to display in the greeting",
+      "fieldType": "string",
+      "defaultValue": "User"
+    },
+    {
+      "name": "greetingMessage",
+      "label": "Greeting Message",
+      "description": "Greeting message prefix (e.g., 'Good morning', 'Hello')",
+      "fieldType": "string",
+      "defaultValue": "Good morning"
+    },
+    {
+      "name": "showDate",
+      "label": "Show Current Date",
+      "description": "Display the current date in the header",
+      "fieldType": "boolean",
+      "defaultValue": true
+    },
+    {
+      "name": "focusTitle",
+      "label": "Focus Section Title",
+      "description": "Title for the Today's Focus section",
+      "fieldType": "string",
+      "defaultValue": "Today's focus"
+    },
+    {
+      "name": "focusDescription",
+      "label": "Focus Section Description",
+      "description": "Description for the Today's Focus section",
+      "fieldType": "string",
+      "defaultValue": "Prioritize time-sensitive deals and critical tasks to finish strong."
+    },
+    {
+      "name": "actionItems",
+      "label": "Action Items",
+      "description": "Array of action items (risks and opportunities) from ServiceNow data",
+      "fieldType": "json",
+      "defaultValue": "[]",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["risk", "opportunity"]
+            },
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "actionLabel": {
+              "type": "string"
+            },
+            "accountId": {
+              "type": "string"
+            },
+            "sysId": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "suggestedActionsCount",
+      "label": "Suggested Actions Count",
+      "description": "Number of suggested actions to display in badge",
+      "fieldType": "number",
+      "defaultValue": 0
+    },
+    {
+      "name": "showOverdueBadge",
+      "label": "Show Overdue Badge",
+      "description": "Display the overdue badge",
+      "fieldType": "boolean",
+      "defaultValue": false
+    },
+    {
+      "name": "quotaAmount",
+      "label": "Quota Amount",
+      "description": "Current quota amount",
+      "fieldType": "number",
+      "defaultValue": 250000
+    },
+    {
+      "name": "forecastAmount",
+      "label": "Forecast Amount",
+      "description": "Total forecast amount",
+      "fieldType": "number",
+      "defaultValue": 546000
+    },
+    {
+      "name": "weightedPipeline",
+      "label": "Weighted Pipeline Percentage",
+      "description": "Weighted pipeline percentage",
+      "fieldType": "string",
+      "defaultValue": "1.67%"
+    },
+    {
+      "name": "pipelineCoverage",
+      "label": "Pipeline Coverage",
+      "description": "Pipeline coverage multiplier",
+      "fieldType": "string",
+      "defaultValue": "0.35x"
+    },
+    {
+      "name": "currentQuarter",
+      "label": "Current Quarter",
+      "description": "Current quarter label (e.g., '2025 Q3')",
+      "fieldType": "string",
+      "defaultValue": "2025 Q3"
+    },
+    {
+      "name": "forecastData",
+      "label": "Forecast Distribution Data",
+      "description": "Forecast distribution by stages for chart",
+      "fieldType": "json",
+      "defaultValue": "[]",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "value": {
+              "type": "number"
+            },
+            "color": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "updates",
+      "label": "Latest Updates",
+      "description": "Array of wins and news updates",
+      "fieldType": "json",
+      "defaultValue": "[]",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["win", "news"]
+            },
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "icon": {
+              "type": "string"
+            },
+            "badge": {
+              "type": "string"
+            },
+            "badgeVariant": {
+              "type": "string",
+              "enum": ["default", "secondary", "outline", "destructive"]
+            },
+            "timestamp": {
+              "type": "string"
+            },
+            "action": {
+              "type": "string"
+            },
+            "sysId": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "enableInteractivity",
+      "label": "Enable Interactivity",
+      "description": "Enable interactive features (buttons, feedback)",
+      "fieldType": "boolean",
+      "defaultValue": true
+    }
+  ],
+  "dispatchedActions": [
+    {
+      "name": "ACTION_ITEM_CLICKED",
+      "label": "Action Item Clicked",
+      "description": "Dispatched when user clicks an action item button",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "actionType": {
+            "type": "string",
+            "description": "Type of action (risk or opportunity)"
+          },
+          "accountId": {
+            "type": "string",
+            "description": "Account ID associated with the action"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the action item"
+          },
+          "sysId": {
+            "type": "string",
+            "description": "System ID of the related record"
+          }
+        }
+      }
+    },
+    {
+      "name": "FEEDBACK_THUMBS_UP",
+      "label": "Positive Feedback Given",
+      "description": "Dispatched when user gives positive feedback on an action item",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "actionItemId": {
+            "type": "string",
+            "description": "ID of the action item"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the action item"
+          }
+        }
+      }
+    },
+    {
+      "name": "FEEDBACK_THUMBS_DOWN",
+      "label": "Negative Feedback Given",
+      "description": "Dispatched when user gives negative feedback on an action item",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "actionItemId": {
+            "type": "string",
+            "description": "ID of the action item"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the action item"
+          }
+        }
+      }
+    },
+    {
+      "name": "UPDATE_ACTION_CLICKED",
+      "label": "Update Action Clicked",
+      "description": "Dispatched when user clicks an action button in the updates section",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "updateType": {
+            "type": "string",
+            "description": "Type of update (win or news)"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the update"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action label that was clicked"
+          },
+          "sysId": {
+            "type": "string",
+            "description": "System ID of the related record"
+          }
+        }
+      }
+    },
+    {
+      "name": "CHART_DATA_POINT_CLICKED",
+      "label": "Chart Data Point Clicked",
+      "description": "Dispatched when user clicks a data point in the forecast chart",
+      "payload": {
+        "type": "object",
+        "properties": {
+          "stageName": {
+            "type": "string",
+            "description": "Name of the forecast stage"
+          },
+          "value": {
+            "type": "number",
+            "description": "Value of the data point"
+          }
+        }
+      }
+    }
+  ]
+}

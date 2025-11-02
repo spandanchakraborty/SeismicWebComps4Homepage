@@ -1,0 +1,627 @@
+/**
+ * SOM Dashboard Homepage Component Styles
+ * Uses ServiceNow Horizon Design System tokens for consistency and theming support
+ */
+
+// Import Horizon Design System tokens
+@import '@servicenow/sass-kit/now-theme';
+
+// Component root - all styles scoped to prevent leakage
+.som-dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $now-color--neutral-0 0%, $now-color--neutral-1 100%);
+  padding: $now-spacing--xl;
+  font-family: $now-font-family--primary;
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    padding: $now-spacing--md;
+  }
+}
+
+// Header Section
+.som-header {
+  margin-bottom: $now-spacing--2xl;
+
+  &-title {
+    font-size: $now-font-size--2xl;
+    font-weight: $now-font-weight--bold;
+    color: $now-color--neutral-18;
+    margin-bottom: $now-spacing--xs;
+    line-height: $now-line-height--tight;
+  }
+
+  &-date {
+    font-size: $now-font-size--md;
+    color: $now-color--neutral-10;
+    font-weight: $now-font-weight--normal;
+  }
+}
+
+// Grid Layout
+.som-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $now-spacing--xl;
+  max-width: 1600px;
+  margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  @media (max-width: 1023px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.som-main-column {
+  display: flex;
+  flex-direction: column;
+  gap: $now-spacing--xl;
+}
+
+.som-sidebar-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Card Component
+.som-card {
+  background: $now-color--neutral-0;
+  border: 1px solid $now-color--neutral-3;
+  border-radius: $now-global--BorderRadius;
+  box-shadow: $now-elevation--raised;
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    box-shadow: $now-elevation--overlay;
+  }
+
+  &-header {
+    padding: $now-spacing--lg;
+    border-bottom: 1px solid $now-color--neutral-3;
+
+    &-content {
+      margin-bottom: $now-spacing--md;
+    }
+  }
+
+  &-title {
+    font-size: $now-font-size--xl;
+    font-weight: $now-font-weight--semibold;
+    color: $now-color--neutral-18;
+    margin: 0;
+    line-height: $now-line-height--tight;
+  }
+
+  &-description {
+    font-size: $now-font-size--sm;
+    color: $now-color--neutral-10;
+    margin-top: $now-spacing--xs;
+    line-height: $now-line-height--normal;
+  }
+
+  &-content {
+    padding: $now-spacing--lg;
+  }
+}
+
+.som-focus-card {
+  border-color: rgba($now-color--primary-2, 0.2);
+  box-shadow: $now-elevation--raised;
+}
+
+// Badge Component
+.som-badge-group {
+  display: flex;
+  gap: $now-spacing--sm;
+  flex-wrap: wrap;
+  margin-top: $now-spacing--md;
+}
+
+.som-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $now-spacing--xs;
+  padding: $now-spacing--xs $now-spacing--sm;
+  border-radius: $now-global--BorderRadius;
+  font-size: $now-font-size--xs;
+  font-weight: $now-font-weight--medium;
+  line-height: $now-line-height--tight;
+
+  &-default {
+    background-color: $now-color--primary-1;
+    color: $now-color--neutral-0;
+  }
+
+  &-destructive {
+    background-color: $now-color--critical-2;
+    color: $now-color--neutral-0;
+  }
+
+  &-secondary {
+    background-color: $now-color--secondary-1;
+    color: $now-color--neutral-18;
+  }
+
+  &-outline {
+    background-color: transparent;
+    border: 1px solid $now-color--neutral-5;
+    color: $now-color--neutral-12;
+  }
+}
+
+// Action Cards Grid
+.som-action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $now-spacing--lg;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.som-action-card {
+  background: $now-color--neutral-0;
+  border: 1px solid rgba($now-color--neutral-5, 0.5);
+  border-radius: $now-global--BorderRadius;
+  padding: $now-spacing--md;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    box-shadow: $now-elevation--overlay;
+    border-color: $now-color--neutral-6;
+  }
+
+  &-header {
+    margin-bottom: $now-spacing--sm;
+  }
+
+  &-badge-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $now-spacing--sm;
+    margin-bottom: $now-spacing--sm;
+  }
+
+  &-title {
+    font-size: $now-font-size--lg;
+    font-weight: $now-font-weight--semibold;
+    color: $now-color--neutral-18;
+    margin: 0;
+    line-height: $now-line-height--tight;
+  }
+
+  &-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &-description {
+    font-size: $now-font-size--sm;
+    color: $now-color--neutral-10;
+    margin-bottom: $now-spacing--md;
+    line-height: $now-line-height--relaxed;
+  }
+}
+
+// Feedback Buttons
+.som-feedback-buttons {
+  display: flex;
+  gap: $now-spacing--xs;
+}
+
+.som-icon-button {
+  background: transparent;
+  border: none;
+  padding: $now-spacing--xs;
+  cursor: pointer;
+  border-radius: $now-global--BorderRadius;
+  color: $now-color--neutral-10;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: $now-color--neutral-2;
+    color: $now-color--neutral-18;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:focus {
+    outline: 2px solid $now-color--focus-2;
+    outline-offset: 2px;
+  }
+}
+
+// Button Component
+.som-button {
+  width: 100%;
+  padding: $now-spacing--sm $now-spacing--md;
+  border-radius: $now-global--BorderRadius;
+  font-size: $now-font-size--sm;
+  font-weight: $now-font-weight--medium;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $now-spacing--xs;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: $now-elevation--raised;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus {
+    outline: 2px solid $now-color--focus-2;
+    outline-offset: 2px;
+  }
+
+  &-default {
+    background-color: $now-color--primary-2;
+    color: $now-color--neutral-0;
+
+    &:hover {
+      background-color: $now-color--primary-3;
+    }
+  }
+
+  &-secondary {
+    background-color: $now-color--secondary-1;
+    color: $now-color--neutral-18;
+
+    &:hover {
+      background-color: $now-color--secondary-2;
+    }
+  }
+
+  &-outline {
+    background-color: transparent;
+    border: 1px solid $now-color--neutral-5;
+    color: $now-color--neutral-12;
+
+    &:hover {
+      background-color: $now-color--neutral-1;
+      border-color: $now-color--neutral-7;
+    }
+  }
+
+  &-small {
+    padding: $now-spacing--xs $now-spacing--sm;
+    font-size: $now-font-size--xs;
+  }
+}
+
+// Attainment Progress Section
+.som-attainment-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $now-spacing--xl;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.som-metrics-column {
+  display: flex;
+  flex-direction: column;
+  gap: $now-spacing--xl;
+}
+
+.som-quota-section {
+  .som-label {
+    font-size: $now-font-size--sm;
+    color: $now-color--neutral-10;
+    margin-bottom: $now-spacing--sm;
+    font-weight: $now-font-weight--normal;
+  }
+
+  .som-quota-value {
+    font-size: $now-font-size--4xl;
+    font-weight: $now-font-weight--bold;
+    color: $now-color--neutral-18;
+    margin: 0;
+    line-height: $now-line-height--tight;
+  }
+
+  .som-quota-forecast {
+    font-size: $now-font-size--2xl;
+    color: $now-color--neutral-10;
+    margin-left: $now-spacing--xs;
+  }
+}
+
+.som-progress-wrapper {
+  margin-top: $now-spacing--md;
+}
+
+.som-progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: $now-color--neutral-3;
+  border-radius: $now-global--BorderRadius;
+  overflow: hidden;
+  position: relative;
+}
+
+.som-progress-fill {
+  height: 100%;
+  background-color: $now-color--success-2;
+  transition: width 0.5s ease;
+  border-radius: $now-global--BorderRadius;
+}
+
+.som-progress-label {
+  font-size: $now-font-size--sm;
+  color: $now-color--neutral-10;
+  margin-top: $now-spacing--sm;
+}
+
+.som-metrics-row {
+  display: flex;
+  flex-direction: column;
+  gap: $now-spacing--md;
+}
+
+.som-metric {
+  .som-label {
+    font-size: $now-font-size--sm;
+    color: $now-color--neutral-10;
+    margin-bottom: $now-spacing--xs;
+  }
+
+  .som-metric-value {
+    font-size: $now-font-size--2xl;
+    font-weight: $now-font-weight--semibold;
+    color: $now-color--neutral-18;
+    margin: 0;
+  }
+}
+
+// Chart Section
+.som-chart-column {
+  .som-chart-title {
+    font-size: $now-font-size--sm;
+    font-weight: $now-font-weight--medium;
+    color: $now-color--neutral-12;
+    margin-bottom: $now-spacing--md;
+  }
+}
+
+.som-chart-container {
+  background: $now-color--neutral-0;
+  border-radius: $now-global--BorderRadius;
+  padding: $now-spacing--md;
+  border: 1px solid $now-color--neutral-3;
+}
+
+.som-bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: $now-spacing--md;
+  height: 300px;
+  padding: $now-spacing--md 0;
+}
+
+.som-bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  gap: $now-spacing--xs;
+}
+
+.som-bar-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.som-bar {
+  width: 100%;
+  max-width: 60px;
+  border: none;
+  border-radius: $now-global--BorderRadius $now-global--BorderRadius 0 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: $now-spacing--xs;
+  
+  &:hover {
+    transform: translateY(-4px);
+    opacity: 0.9;
+  }
+
+  &:focus {
+    outline: 2px solid $now-color--focus-2;
+    outline-offset: 2px;
+  }
+}
+
+.som-bar-label {
+  font-size: $now-font-size--xs;
+  font-weight: $now-font-weight--medium;
+  color: $now-color--neutral-0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.som-bar-name {
+  font-size: $now-font-size--xs;
+  color: $now-color--neutral-10;
+  text-align: center;
+  font-weight: $now-font-weight--medium;
+}
+
+.som-quarter-label {
+  font-size: $now-font-size--sm;
+  color: $now-color--neutral-10;
+  font-weight: $now-font-weight--normal;
+}
+
+// Updates Card
+.som-updates-card {
+  height: 100%;
+}
+
+.som-updates-section {
+  margin-bottom: $now-spacing--xl;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.som-section-title {
+  font-size: $now-font-size--md;
+  font-weight: $now-font-weight--semibold;
+  color: $now-color--neutral-18;
+  margin-bottom: $now-spacing--md;
+  display: flex;
+  align-items: center;
+  gap: $now-spacing--sm;
+}
+
+.som-update-item {
+  border-radius: $now-global--BorderRadius;
+  padding: $now-spacing--md;
+  margin-bottom: $now-spacing--sm;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.som-update-win {
+  background-color: rgba($now-color--success-1, 0.05);
+  border: 1px solid rgba($now-color--success-2, 0.2);
+}
+
+.som-update-news {
+  background-color: $now-color--neutral-0;
+  border: 1px solid rgba($now-color--neutral-5, 0.5);
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: $now-color--neutral-6;
+  }
+}
+
+.som-update-content {
+  display: flex;
+  gap: $now-spacing--md;
+  align-items: flex-start;
+}
+
+.som-update-icon {
+  font-size: $now-font-size--2xl;
+  line-height: 1;
+}
+
+.som-update-text {
+  flex: 1;
+}
+
+.som-update-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $now-spacing--sm;
+  margin-bottom: $now-spacing--sm;
+}
+
+.som-update-title {
+  font-size: $now-font-size--sm;
+  font-weight: $now-font-weight--medium;
+  color: $now-color--neutral-18;
+  margin: 0 0 $now-spacing--xs 0;
+  line-height: $now-line-height--normal;
+}
+
+.som-update-description {
+  font-size: $now-font-size--xs;
+  color: $now-color--neutral-10;
+  margin: 0 0 $now-spacing--md 0;
+  line-height: $now-line-height--relaxed;
+}
+
+.som-update-success {
+  color: $now-color--success-3;
+  font-weight: $now-font-weight--semibold;
+}
+
+.som-update-timestamp {
+  font-size: $now-font-size--xs;
+  color: $now-color--neutral-8;
+  white-space: nowrap;
+}
+
+.som-news-list {
+  display: flex;
+  flex-direction: column;
+  gap: $now-spacing--md;
+}
+
+// Icon Styles
+.som-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+
+  &-success {
+    color: $now-color--success-2;
+  }
+
+  &-info {
+    color: $now-color--info-2;
+  }
+}
+
+// Accessibility & Focus States
+*:focus-visible {
+  outline: 2px solid $now-color--focus-2;
+  outline-offset: 2px;
+}
+
+// Dark Mode Support (automatic with Horizon tokens)
+@media (prefers-color-scheme: dark) {
+  .som-dashboard-container {
+    background: linear-gradient(135deg, $now-color--neutral-19 0%, $now-color--neutral-18 100%);
+  }
+}
+
+// Print Styles
+@media print {
+  .som-dashboard-container {
+    background: white;
+  }
+
+  .som-button,
+  .som-icon-button {
+    display: none;
+  }
+}

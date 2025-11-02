@@ -1,0 +1,13 @@
+{
+  "scope": "x_som_demo",
+  "profile": "default",
+  "host": {
+    "protocol": "https",
+    "hostname": "YOUR-INSTANCE.service-now.com",
+    "username": "your.username",
+    "password": "your_password"
+  },
+  "proxy": {
+    "source": "YOUR-INSTANCE.service-now.com"
+  }
+}
