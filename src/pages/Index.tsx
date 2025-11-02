@@ -1,11 +1,24 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import DashboardHeader from "@/components/DashboardHeader";
+import TodaysFocus from "@/components/TodaysFocus";
+import AttainmentProgress from "@/components/AttainmentProgress";
+import UpdatesCard from "@/components/UpdatesCard";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-gradient-to-br from-background to-secondary/30">
+      <div className="container mx-auto px-4 py-8 max-w-[1600px]">
+        <DashboardHeader userName="Eliza" />
+        
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 space-y-6">
+            <TodaysFocus />
+            <AttainmentProgress />
+          </div>
+          
+          <div className="lg:col-span-1">
+            <UpdatesCard />
+          </div>
+        </div>
       </div>
     </div>
   );
